@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<body>
+<center>
+
+  <div>
+    <label>Text Input : </label>
+    <textarea id="textarea"  rows = "4" colS ="40">
+         Massage input Test Test Test Test Test test test
+    </textarea>
+  </div>
+  <br>
+  <div>
+    <label>Sensitive Case : </label>
+    <input type="radio" name="Senc" value="Yes">Yes
+    <input type="radio" name="Senc" value="No">No
+  </div>
+  <br>
+  <div>
+    <label>Search : </label>
+    <input type="Text" name="Text" id="searching">
+  </div>
+  <br>
+  <div>
+    <button onclick="myFunction()">Search</button>
+  </div>
+  <div>
+    <p>Result for Search : </p>
+    <p id="res"></p>
+  </div>
+
+
+<script type="text/javascript">
+  function myFunction(){
+    var string = document.getElementById("textarea").value;
+    var search = document.getElementById("searching").value;
+    
+    var checkR = document.getElementsByName("Senc");
+    var Result = 0;
+    for(var i = 0; i < checkR.length; i++){
+      var ChRadio = "";
+        if(checkR[i].checked){
+          
+          ChRadio = checkR[i].value;  
+          
+          if (ChRadio=="Yes") {
+            Result = string.match(new RegExp(search, "g")).length;
+            document.getElementById("res").innerHTML = Result;
+          }
+          else if (ChRadio=="No"){
+            Result = string.match(new RegExp(search, "gi")).length;
+            document.getElementById("res").innerHTML = Result;
+          }
+      
+      }
+        
+    }
+    
+
+  }
+</script>
+</center>
+</body>
+
+</html>
